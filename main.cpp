@@ -6,6 +6,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    cout << "Hello World"; //kto-to huy dada
+    cout << "Hello World"; //kto-to huy dadahjk
     return a.exec();
 }
