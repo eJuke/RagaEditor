@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTextEdit>
+#include <QLayout>
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QTextEdit *mainArea;
+private slots:
+    void textSlot();
 };
 
 #endif // MAINWINDOW_H
