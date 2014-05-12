@@ -1,1 +1,10 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/icons">
+        <file>text_bold.ico</file>
+        <file>text_bold_sel.ico</file>
+        <file>text_italic.ico</file>
+        <file>text_italic_sel.ico</file>
+        <file>text_underline.ico</file>
+        <file>text_underline_sel.ico</file>
+    </qresource>
+</RCC>

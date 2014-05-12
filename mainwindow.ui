@@ -62,8 +62,8 @@
           </property>
           <property name="icon">
            <iconset resource="resources/icons.qrc">
-            <normaloff>:/new/unsel/text_bold.ico</normaloff>
-            <normalon>:/new/sel/text_bold_sel.ico</normalon>:/new/unsel/text_bold.ico</iconset>
+            <normaloff>:/icons/text_bold.ico</normaloff>
+            <normalon>:/icons/text_bold_sel.ico</normalon>:/icons/text_bold.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -98,8 +98,8 @@
           </property>
           <property name="icon">
            <iconset resource="resources/icons.qrc">
-            <normaloff>:/new/unsel/text_italic.ico</normaloff>
-            <normalon>:/new/sel/text_italic_sel.ico</normalon>:/new/unsel/text_italic.ico</iconset>
+            <normaloff>:/icons/text_italic.ico</normaloff>
+            <normalon>:/icons/text_italic_sel.ico</normalon>:/icons/text_italic.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -125,8 +125,8 @@
           </property>
           <property name="icon">
            <iconset resource="resources/icons.qrc">
-            <normaloff>:/new/unsel/text_underline.ico</normaloff>
-            <normalon>:/new/sel/text_underline_sel.ico</normalon>:/new/unsel/text_underline.ico</iconset>
+            <normaloff>:/icons/text_underline.ico</normaloff>
+            <normalon>:/icons/text_underline_sel.ico</normalon>:/icons/text_underline.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -139,7 +139,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignVCenter">
          <widget class="QLabel" name="label">
           <property name="maximumSize">
            <size>
@@ -152,7 +152,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignLeft">
          <widget class="QPlainTextEdit" name="plainTextEdit">
           <property name="maximumSize">
            <size>
