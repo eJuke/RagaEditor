@@ -19,3 +19,6 @@ HEADERS  += mainwindow.h \
     headers/syntax_check.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources/icons.qrc
