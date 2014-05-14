@@ -15,3 +15,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_actionQuit_2_triggered()
+{
+    qApp->exit();
+}

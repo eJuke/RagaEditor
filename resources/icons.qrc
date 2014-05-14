@@ -6,5 +6,7 @@
         <file>text_italic_sel.ico</file>
         <file>text_underline.ico</file>
         <file>text_underline_sel.ico</file>
+        <file>Redo.ico</file>
+        <file>Undo.ico</file>
     </qresource>
 </RCC>
