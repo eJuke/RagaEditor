@@ -345,7 +345,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/icons.qrc">
      <normaloff>:/menu_icons/Files-NewFile.ico</normaloff>:/menu_icons/Files-NewFile.ico</iconset>
    </property>
    <property name="text">
@@ -357,7 +357,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/icons.qrc">
      <normaloff>:/menu_icons/Files-OpenFile.ico</normaloff>:/menu_icons/Files-OpenFile.ico</iconset>
    </property>
    <property name="text">
@@ -369,7 +369,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/icons.qrc">
      <normaloff>:/menu_icons/Files-Save.ico</normaloff>:/menu_icons/Files-Save.ico</iconset>
    </property>
    <property name="text">
@@ -380,6 +380,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu_icons/Help-About.png</normaloff>:/menu_icons/Help-About.png</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -388,6 +392,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu_icons/Help-Settins.png</normaloff>:/menu_icons/Help-Settins.png</iconset>
+   </property>
    <property name="text">
     <string>Settings</string>
    </property>
@@ -397,7 +405,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionQuit_2">
    <property name="icon">
-    <iconset>
+    <iconset resource="resources/icons.qrc">
      <normaloff>:/menu_icons/Files-Exit.ico</normaloff>:/menu_icons/Files-Exit.ico</iconset>
    </property>
    <property name="text">

@@ -4,28 +4,24 @@
 #include <QLayout>
 
 
-MainWindow::MainWindow(QWidget *parent) :
+
+
+MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-
+    ui(new Ui::MainWindow){
+        ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
-
 }
 
 
-void MainWindow::on_actionQuit_2_triggered()
-{
+void MainWindow::on_actionQuit_2_triggered(){
     qApp->exit();
 }
 
-void MainWindow::on_actionAbout_triggered()
-{
+void MainWindow::on_actionAbout_triggered(){
     QWidget *about = new QWidget;
     about_pic = new QLabel;
     about_text = new QLabel("RagaEditor v0.1alpha (c)2014");
@@ -39,3 +35,14 @@ void MainWindow::on_actionAbout_triggered()
 }
 
 
+
+void MainWindow::on_actionOpen_triggered(){
+    QString FilePath;
+    FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
+    QFile file(FilePath);
+        if (!file.open(QIODevice::ReadOnly)){ return;}
+        else{
+            ErrorOpen = new QMessageBox();
+            ErrorOpen->information(this,"Error","File is read only");
+        }
+}

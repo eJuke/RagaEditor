@@ -9,4 +9,12 @@
         <file>Redo.ico</file>
         <file>Undo.ico</file>
     </qresource>
+    <qresource prefix="/menu_icons">
+        <file>Files-Exit.ico</file>
+        <file>Files-NewFile.ico</file>
+        <file>Files-OpenFile.ico</file>
+        <file>Files-Save.ico</file>
+        <file>Help-About.png</file>
+        <file>Help-Settins.png</file>
+    </qresource>
 </RCC>
