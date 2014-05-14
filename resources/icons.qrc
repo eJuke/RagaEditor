@@ -1,20 +1,20 @@
 <RCC>
-    <qresource prefix="/icons">
-        <file>text_bold.ico</file>
-        <file>text_bold_sel.ico</file>
-        <file>text_italic.ico</file>
-        <file>text_italic_sel.ico</file>
-        <file>text_underline.ico</file>
-        <file>text_underline_sel.ico</file>
-        <file>Redo.ico</file>
-        <file>Undo.ico</file>
+    <qresource prefix="/toolbar">
+        <file>ToolAlLeft.png</file>
+        <file>ToolAlRight.png</file>
+        <file>ToolBold.png</file>
+        <file>ToolItalic.png</file>
+        <file>ToolRedo.png</file>
+        <file>ToolUnderL.png</file>
+        <file>ToolUndo.png</file>
+        <file>ToolAlCenter.png</file>
     </qresource>
-    <qresource prefix="/menu_icons">
-        <file>Files-Exit.ico</file>
-        <file>Files-NewFile.ico</file>
-        <file>Files-OpenFile.ico</file>
-        <file>Files-Save.ico</file>
-        <file>Help-About.png</file>
-        <file>Help-Settins.png</file>
+    <qresource prefix="/menu">
+        <file>MenuExit.png</file>
+        <file>MenuHelp.png</file>
+        <file>MenuNew.png</file>
+        <file>MenuOpen.png</file>
+        <file>MenuSave.png</file>
+        <file>MenuSet.png</file>
     </qresource>
 </RCC>

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QWidget>
 #include <QLayout>
+#include <QDockWidget>
 
 
 
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow){
         ui->setupUi(this);
 }
+
 
 MainWindow::~MainWindow(){
     delete ui;
@@ -40,9 +42,16 @@ void MainWindow::on_actionOpen_triggered(){
     QString FilePath;
     FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
     QFile file(FilePath);
-        if (!file.open(QIODevice::ReadOnly)){ return;}
-        else{
-            ErrorOpen = new QMessageBox();
-            ErrorOpen->information(this,"Error","File is read only");
-        }
 }
+
+
+void MainWindow::on_actionToolBar_toggled(bool arg1){
+    if (!arg1)  ui->ToolBarDock->close();
+    else        ui->ToolBarDock->show();
+}
+void MainWindow::on_actionStatusBar_triggered(bool checked){
+    if(!checked) ui->statusBar->close();
+    else         ui->statusBar->show();
+}
+
+
