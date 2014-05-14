@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "headers/mainwindow.h"
 #include "headers/syntax_check.h"
 #include <QApplication>
 int main(int argc, char *argv[])

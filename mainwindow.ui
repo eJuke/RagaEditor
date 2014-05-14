@@ -67,8 +67,8 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/bar_icons/Undo.ico</normaloff>:/bar_icons/Undo.ico</iconset>
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/icons/Undo.ico</normaloff>:/icons/Undo.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -99,8 +99,8 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/bar_icons/Redo.ico</normaloff>:/bar_icons/Redo.ico</iconset>
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/icons/Redo.ico</normaloff>:/icons/Redo.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -134,9 +134,9 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/bar_icons/text_bold.ico</normaloff>
-            <normalon>:/bar_icons/text_bold_sel.ico</normalon>:/bar_icons/text_bold.ico</iconset>
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/icons/text_bold.ico</normaloff>
+            <normalon>:/icons/text_bold_sel.ico</normalon>:/icons/text_bold.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -173,9 +173,9 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/bar_icons/text_italic.ico</normaloff>
-            <normalon>:/bar_icons/text_italic_sel.ico</normalon>:/bar_icons/text_italic.ico</iconset>
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/icons/text_italic.ico</normaloff>
+            <normalon>:/icons/text_italic_sel.ico</normalon>:/icons/text_italic.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -203,9 +203,9 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>:/bar_icons/text_underline.ico</normaloff>
-            <normalon>:/bar_icons/text_underline_sel.ico</normalon>:/bar_icons/text_underline.ico</iconset>
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/icons/text_underline.ico</normaloff>
+            <normalon>:/icons/text_underline_sel.ico</normalon>:/icons/text_underline.ico</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -409,6 +409,8 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

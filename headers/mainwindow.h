@@ -4,8 +4,7 @@
 #include <QMainWindow>
 #include <QTextEdit>
 #include <QMenuBar>
-#include "headers/aboutwindow.h"
-#include "headers/setwindow.h"
+#include <QLabel>
 namespace Ui {
 class MainWindow;
 }
@@ -20,6 +19,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QLabel *about_pic;
+    QLabel *about_text;
 
 
 private slots:
