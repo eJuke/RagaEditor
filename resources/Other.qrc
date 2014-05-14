@@ -1,1 +1,5 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/about">
+        <file>About_pic.png</file>
+    </qresource>
+</RCC>
