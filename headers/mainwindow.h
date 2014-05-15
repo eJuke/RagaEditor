@@ -34,5 +34,6 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionToolBar_toggled(bool arg1);
     void on_actionStatusBar_triggered(bool checked);
+    void on_actionSettings_triggered();
 };
 #endif // MAINWINDOW_H

@@ -18,11 +18,30 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-
+//File_sets
 void MainWindow::on_actionQuit_2_triggered(){
     qApp->exit();
 }
+void MainWindow::on_actionOpen_triggered(){
+    QString FilePath;
+    FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
+    QFile file(FilePath);
+}
+//Window_sets
+void MainWindow::on_actionToolBar_toggled(bool arg1){
+    if (!arg1)  ui->ToolBarDock->close();
+    else        ui->ToolBarDock->show();
+}
+void MainWindow::on_actionStatusBar_triggered(bool checked){
+    if(!checked) ui->statusBar->close();
+    else         ui->statusBar->show();
+}
+//Help_sets
+void MainWindow::on_actionSettings_triggered()
+{
+    QWidget *settings = new QWidget;
 
+}
 void MainWindow::on_actionAbout_triggered(){
     QWidget *about = new QWidget;
     about_pic = new QLabel;
@@ -35,23 +54,3 @@ void MainWindow::on_actionAbout_triggered(){
     about->setFixedSize(400,400);
     about->show();
 }
-
-
-
-void MainWindow::on_actionOpen_triggered(){
-    QString FilePath;
-    FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
-    QFile file(FilePath);
-}
-
-
-void MainWindow::on_actionToolBar_toggled(bool arg1){
-    if (!arg1)  ui->ToolBarDock->close();
-    else        ui->ToolBarDock->show();
-}
-void MainWindow::on_actionStatusBar_triggered(bool checked){
-    if(!checked) ui->statusBar->close();
-    else         ui->statusBar->show();
-}
-
-

@@ -115,7 +115,7 @@
     <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
    </property>
    <property name="allowedAreas">
-    <set>Qt::LeftDockWidgetArea</set>
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
     <string>ToolBar</string>
@@ -162,9 +162,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolUndo.png</normaloff>:/toolbar/ToolUndo.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255));
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -194,9 +198,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolBold.png</normaloff>:/toolbar/ToolBold.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -207,9 +215,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -232,9 +237,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolItalic.png</normaloff>:/toolbar/ToolItalic.png</iconset>
+          <property name="styleSheet">
+           <string>QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -245,9 +254,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -270,9 +276,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolUnderL.png</normaloff>:/toolbar/ToolUnderL.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -283,9 +293,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup</string>
-          </attribute>
          </widget>
         </item>
         <item>
@@ -343,9 +350,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolRedo.png</normaloff>:/toolbar/ToolRedo.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255));
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -375,9 +386,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolAlLeft.png</normaloff>:/toolbar/ToolAlLeft.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -388,9 +403,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup_2</string>
-          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -413,9 +425,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolAlCenter.png</normaloff>:/toolbar/ToolAlCenter.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -426,9 +442,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup_2</string>
-          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -451,9 +464,13 @@
             <height>36</height>
            </size>
           </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/toolbar/ToolAlRight.png</normaloff>:/toolbar/ToolAlRight.png</iconset>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:checked {
+background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
+}</string>
           </property>
           <property name="iconSize">
            <size>
@@ -464,9 +481,6 @@
           <property name="checkable">
            <bool>true</bool>
           </property>
-          <attribute name="buttonGroup">
-           <string notr="true">buttonGroup_2</string>
-          </attribute>
          </widget>
         </item>
         <item>
@@ -489,10 +503,6 @@
    </widget>
   </widget>
   <action name="actionNew">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuNew.png</normaloff>:/menu/MenuNew.png</iconset>
-   </property>
    <property name="text">
     <string>New</string>
    </property>
@@ -501,10 +511,6 @@
    </property>
   </action>
   <action name="actionOpen">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuOpen.png</normaloff>:/menu/MenuOpen.png</iconset>
-   </property>
    <property name="text">
     <string>Open</string>
    </property>
@@ -513,10 +519,6 @@
    </property>
   </action>
   <action name="actionSave">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuSave.png</normaloff>:/menu/MenuSave.png</iconset>
-   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -525,10 +527,6 @@
    </property>
   </action>
   <action name="actionAbout">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuHelp.png</normaloff>:/menu/MenuHelp.png</iconset>
-   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -537,10 +535,6 @@
    </property>
   </action>
   <action name="actionSettings">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuSet.png</normaloff>:/menu/MenuSet.png</iconset>
-   </property>
    <property name="text">
     <string>Settings</string>
    </property>
@@ -549,10 +543,6 @@
    </property>
   </action>
   <action name="actionQuit_2">
-   <property name="icon">
-    <iconset resource="resources/icons.qrc">
-     <normaloff>:/menu/MenuSet.png</normaloff>:/menu/MenuSet.png</iconset>
-   </property>
    <property name="text">
     <string>Quit</string>
    </property>
@@ -584,12 +574,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="resources/icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_2"/>
- </buttongroups>
 </ui>
