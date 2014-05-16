@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += opengl
+RC_FILE = logo.rc
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,4 +24,5 @@ HEADERS  += \
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    resources/Other.qrc
+    resources/Other.qrc \
+    resources/icons.qrc

@@ -3,8 +3,11 @@
 #include <QWidget>
 #include <QLayout>
 #include <QDockWidget>
-
-
+#include <QRadioButton>
+#include <QFile>
+#include <QString>
+#include <QTextStream>
+#include <QComboBox>
 
 
 MainWindow::MainWindow(QWidget *parent):
@@ -37,10 +40,60 @@ void MainWindow::on_actionStatusBar_triggered(bool checked){
     else         ui->statusBar->show();
 }
 //Help_sets
+
 void MainWindow::on_actionSettings_triggered()
 {
     QWidget *settings = new QWidget;
+    //setting an edit mode
+    QString *bla = new QString;
+    QFile setting(".\\settings.txt",this);
+    setting.open(QIODevice::ReadWrite | QIODevice::Text);
+    QTextStream in(&setting);
+    in >> *bla;
+    setting.close();
+        QLabel *set_Mode_text = new QLabel("Choose a mode:");
+        QComboBox *set_ModeA = new QComboBox;
+        set_ModeA->addItem("Code Edit");
+        set_ModeA->addItem("Text Edit");
+        QLabel *set_Theme_text = new QLabel("Theme:");
+        QComboBox *set_ThemeA = new QComboBox;
+        set_ThemeA->addItem("Black");
+        set_ThemeA->addItem("White");
+        QLabel *set_Lang_text = new QLabel("Language:");
+        QComboBox *set_LangA = new QComboBox;
+        set_LangA->addItem("English");
+        set_LangA->addItem("Russian");
+        QPushButton *set_apply = new QPushButton("Apply",this);
+        QPushButton *set_decline = new QPushButton("Decline",this);
+        set_apply->setMinimumSize(60,30);
+        set_decline->setMinimumSize(60,30);
+        set_apply->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+        set_decline->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+     /*   connect(set_ModeA,SIGNAL(activated(1)),this,SLOT(change_EditMode(true)));
+        connect(set_ModeA,SIGNAL(activated(2)),this,SLOT(change_EditMode(false)));*/
+    //compositiona
+        QVBoxLayout *set = new QVBoxLayout;
+        QHBoxLayout *set1_1 = new QHBoxLayout;
+        QHBoxLayout *set2_1 = new QHBoxLayout;
+        QHBoxLayout *set3_1 = new QHBoxLayout;
+        QHBoxLayout *setLast_1 = new QHBoxLayout;
+    set1_1->addWidget(set_Mode_text);
+    set1_1->addWidget(set_ModeA);
+    set2_1->addWidget(set_Theme_text);
+    set2_1->addWidget(set_ThemeA);
+    set3_1->addWidget(set_Lang_text);
+    set3_1->addWidget(set_LangA);
+    setLast_1->addWidget(set_apply);
+    setLast_1->addWidget(set_decline);
+    setLast_1->setAlignment(set_apply,Qt::AlignRight);
+    set->addLayout(set1_1);
+    set->addLayout(set2_1);
+    set->addLayout(set3_1);
+    set->addLayout(setLast_1);
 
+
+    settings->setLayout(set);
+    settings->show();
 }
 void MainWindow::on_actionAbout_triggered(){
     QWidget *about = new QWidget;
@@ -54,3 +107,7 @@ void MainWindow::on_actionAbout_triggered(){
     about->setFixedSize(400,400);
     about->show();
 }
+void MainWindow::change_EditMode(bool x){
+    *SetMode = x;
+}
+

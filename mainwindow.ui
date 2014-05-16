@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(16,16,16);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -45,7 +48,12 @@
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item>
-       <widget class="QTextEdit" name="textEdit"/>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="styleSheet">
+         <string notr="true">background-color:rgb(56, 56, 56);
+</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -57,10 +65,43 @@
      <x>0</x>
      <y>0</y>
      <width>789</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+ 	background-color: rgb(52,52,52);
+	color:white;
+ }
+
+ QMenuBar::item {
+     spacing: 3px;
+     padding: 1px 4px;
+     background: transparent;
+     border-radius: 4px;
+ }
+
+ QMenuBar::item:selected {
+     background: #444444;
+ }
+
+ QMenuBar::item:pressed {
+     background: #000000;
+ }</string>
+   </property>
    <widget class="QMenu" name="menuFile">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+	background-color:white;
+}
+QMenu::item{
+	background-color: transparent;
+}
+QMenu::item:selected{
+	background-color: #e2e2e2;
+	color: #000000;
+}</string>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
@@ -71,6 +112,18 @@
     <addaction name="actionQuit_2"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+	background-color:white;
+}
+QMenu::item{
+	background-color: transparent;
+}
+QMenu::item:selected{
+	background-color: #e2e2e2;
+	color: #000000;
+}</string>
+    </property>
     <property name="title">
      <string>Help</string>
     </property>
@@ -78,6 +131,18 @@
     <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+	background-color:white;
+}
+QMenu::item{
+	background-color: transparent;
+}
+QMenu::item:selected{
+	background-color: #e2e2e2;
+	color: #000000;
+}</string>
+    </property>
     <property name="title">
      <string>Window</string>
     </property>
@@ -88,7 +153,13 @@
    <addaction name="menuWindow"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(52,52,52);
+	border: 1px solid #676767;
+color:white;</string>
+   </property>
+  </widget>
   <widget class="QDockWidget" name="ToolBarDock">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -110,6 +181,10 @@
    </property>
    <property name="accessibleName">
     <string>ToolBar</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(52,52,52);
+color:white;</string>
    </property>
    <property name="features">
     <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
@@ -162,19 +237,29 @@
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Undo</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
 QPushButton:pressed {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255));
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
 }</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolUndoUnSel.png</normaloff>:/tools/ToolBar/ToolUndoUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
             <width>24</width>
             <height>24</height>
            </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -198,13 +283,27 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Bold text style</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolBoldUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolBold.png</normalon>:/tools/ToolBar/ToolBoldUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -213,6 +312,9 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
            </size>
           </property>
           <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
            <bool>true</bool>
           </property>
          </widget>
@@ -237,13 +339,27 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Italic text style</string>
+          </property>
           <property name="styleSheet">
-           <string>QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+           <string notr="true">QPushButton {
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolItalicUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolItalic.png</normalon>:/tools/ToolBar/ToolItalicUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -252,6 +368,9 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
            </size>
           </property>
           <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
            <bool>true</bool>
           </property>
          </widget>
@@ -276,13 +395,27 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Underline text style</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolUnderLUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolUnderL.png</normalon>:/tools/ToolBar/ToolUnderLUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -291,6 +424,9 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
            </size>
           </property>
           <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
            <bool>true</bool>
           </property>
          </widget>
@@ -350,19 +486,30 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Redo</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
 QPushButton:pressed {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255));
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
 }</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolRedoUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolRedo.png</normalon>:/tools/ToolBar/ToolRedoUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
             <width>24</width>
             <height>24</height>
            </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -386,13 +533,27 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Left Align text style</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolAlLeftUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolAlLeft.png</normalon>:/tools/ToolBar/ToolAlLeftUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -403,6 +564,15 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
           <property name="checkable">
            <bool>true</bool>
           </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">AllignGroup</string>
+          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -425,13 +595,27 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Center Align text style</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolAlCenterUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolAlCenter.png</normalon>:/tools/ToolBar/ToolAlCenterUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -442,6 +626,15 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
           <property name="checkable">
            <bool>true</bool>
           </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">AllignGroup</string>
+          </attribute>
          </widget>
         </item>
         <item alignment="Qt::AlignHCenter">
@@ -464,13 +657,97 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Right Align text style</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-background-color:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
 }
-QPushButton:checked {
-background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 rgba(185, 185, 185, 255), stop:1 rgba(255, 255, 255, 255))
-}</string>
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolAlRightUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolAlRight.png</normalon>
+            <activeoff>:/tools/ToolBar/ToolAlRightUnSel.png</activeoff>
+            <activeon>:/tools/ToolBar/ToolAlRight.png</activeon>:/tools/ToolBar/ToolAlRightUnSel.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string/>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">AllignGroup</string>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="statusTip">
+           <string>Align Just text style</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolAlJustUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolAlJust.png</normalon>:/tools/ToolBar/ToolAlJustUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -481,6 +758,15 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
           <property name="checkable">
            <bool>true</bool>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">AllignGroup</string>
+          </attribute>
          </widget>
         </item>
         <item>
@@ -574,6 +860,11 @@ background-color:qlineargradient(spread:pad, x1:1, y1:0.028, x2:0, y2:1, stop:0 
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources/icons.qrc"/>
+ </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="AllignGroup"/>
+ </buttongroups>
 </ui>

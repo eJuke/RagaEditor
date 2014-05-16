@@ -26,6 +26,8 @@ private:
     Ui::MainWindow *ui;
     QLabel *about_pic;
     QLabel *about_text;
+    bool *SetMode = new bool;
+
 
 
 private slots:
@@ -35,5 +37,6 @@ private slots:
     void on_actionToolBar_toggled(bool arg1);
     void on_actionStatusBar_triggered(bool checked);
     void on_actionSettings_triggered();
+    void change_EditMode(bool x);
 };
 #endif // MAINWINDOW_H
