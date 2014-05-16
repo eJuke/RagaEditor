@@ -19,9 +19,9 @@ void MainWindow::on_actionQuit_2_triggered(){
     qApp->exit();
 }
 void MainWindow::on_actionOpen_triggered(){
-    QString FilePath;
-    FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
-    QFile file(FilePath);
+   // FilePath = new QString;
+  //  FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
+  //  QFile file(FilePath);
 }
 //Window_sets
 void MainWindow::on_actionToolBar_toggled(bool arg1){
@@ -104,3 +104,9 @@ void MainWindow::change_EditMode(bool x){
     *SetMode = x;
 }
 
+
+void MainWindow::on_actionSave_triggered()
+{
+    QString Save_pat; // = new QString;
+    Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "", tr("Text(*.txt);;C++(*.cpp);; html (*.htm, *.html)"));
+}

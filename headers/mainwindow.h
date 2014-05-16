@@ -8,13 +8,11 @@
 #include <QLabel>
 #include <QString>
 #include <QFileDialog>
-#include <QEvent>
 #include <QWidget>
 #include <QLayout>
 #include <QDockWidget>
 #include <QRadioButton>
 #include <QFile>
-#include <QString>
 #include <QTextStream>
 #include <QComboBox>
 
@@ -47,6 +45,9 @@ private:
 
 
     QFile *setting;
+    //File_paths
+    QString *FilePath;
+    QString *Save_path;
 
 
 private slots:
@@ -57,5 +58,6 @@ private slots:
     void on_actionStatusBar_triggered(bool checked);
     void on_actionSettings_triggered();
     void change_EditMode(bool x);
+    void on_actionSave_triggered();
 };
 #endif // MAINWINDOW_H
