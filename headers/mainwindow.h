@@ -9,6 +9,14 @@
 #include <QString>
 #include <QFileDialog>
 #include <QEvent>
+#include <QWidget>
+#include <QLayout>
+#include <QDockWidget>
+#include <QRadioButton>
+#include <QFile>
+#include <QString>
+#include <QTextStream>
+#include <QComboBox>
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +34,19 @@ private:
     Ui::MainWindow *ui;
     QLabel *about_pic;
     QLabel *about_text;
+    QString *str_sets;
     bool *SetMode = new bool;
+    QPushButton *set_decline;
+    QPushButton *set_apply;
+    QComboBox *set_LangA;
+    QLabel *set_Lang_text;
+    QComboBox *set_ThemeA;
+    QLabel *set_Theme_text;
+    QComboBox *set_ModeA;
+    QLabel *set_Mode_text;
 
+
+    QFile *setting;
 
 
 private slots:
