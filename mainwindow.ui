@@ -51,6 +51,7 @@
        <widget class="QTextEdit" name="textEdit">
         <property name="styleSheet">
          <string notr="true">background-color:rgb(56, 56, 56);
+color:white;
 </string>
         </property>
        </widget>
