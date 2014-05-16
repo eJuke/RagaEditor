@@ -59,5 +59,7 @@ private slots:
     void on_actionSettings_triggered();
     void change_EditMode(bool x);
     void on_actionSave_triggered();
+    void on_butRedo_clicked();
+    void on_butUndo_clicked();
 };
 #endif // MAINWINDOW_H

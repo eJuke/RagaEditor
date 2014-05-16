@@ -110,3 +110,13 @@ void MainWindow::on_actionSave_triggered()
     QString Save_pat; // = new QString;
     Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "", tr("Text(*.txt);;C++(*.cpp);; html (*.htm, *.html)"));
 }
+
+void MainWindow::on_butRedo_clicked()
+{
+    ui->textEdit->redo();
+}
+
+void MainWindow::on_butUndo_clicked()
+{
+    ui->textEdit->undo();
+}
