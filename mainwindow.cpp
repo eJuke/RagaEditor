@@ -18,11 +18,32 @@ MainWindow::~MainWindow(){
 void MainWindow::on_actionQuit_2_triggered(){
     qApp->exit();
 }
+
+//Open File
 void MainWindow::on_actionOpen_triggered(){
-   // FilePath = new QString;
-  //  FilePath = QFileDialog::getOpenFileName(this, tr("Open file"),"",tr("C++ source file(*.cpp);;Text file (*.txt);; Rich Text Format file (*.rtf);;All files (*.*)"));
-  //  QFile file(FilePath);
+
+    QString FilePath = QFileDialog::getOpenFileName(this, tr("Open File"), "",
+            tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; Rich Text Format file (*.rtf);;All files (*.*)"));
+
+        if (FilePath != "")
+        {
+            QFile file(FilePath);
+
+            if (!file.open(QIODevice::ReadOnly))
+            {
+                QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
+                return;
+            }
+
+            QTextStream text(&file);
+
+            ui->textEdit->setText(text.readAll());
+
+            file.close();
+        }
 }
+
+
 //Window_sets
 void MainWindow::on_actionToolBar_toggled(bool arg1){
     if (!arg1)  ui->ToolBarDock->close();
@@ -104,11 +125,34 @@ void MainWindow::change_EditMode(bool x){
     *SetMode = x;
 }
 
-
+//Save File
 void MainWindow::on_actionSave_triggered()
 {
-    QString Save_pat; // = new QString;
-    Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "", tr("Text(*.txt);;C++(*.cpp);; html (*.htm, *.html)"));
+
+    QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
+        tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; html (*.htm, *.html)"));
+
+        if (Save_pat != "")
+        {
+            QFile file(Save_pat);
+
+            if (!file.open(QIODevice::WriteOnly))
+            {
+                QMessageBox::critical(this,tr("Error"),tr("Error"));
+                return;
+            }
+
+            else
+            {
+                QTextStream stream(&file);
+
+                stream << ui->textEdit->toPlainText();
+
+                stream.flush();
+
+                file.close();
+            }
+        }
 }
 
 void MainWindow::on_butRedo_clicked()
@@ -120,3 +164,4 @@ void MainWindow::on_butUndo_clicked()
 {
     ui->textEdit->undo();
 }
+

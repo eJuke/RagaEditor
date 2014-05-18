@@ -61,5 +61,7 @@ private slots:
     void on_actionSave_triggered();
     void on_butRedo_clicked();
     void on_butUndo_clicked();
+    void on_actionToolBar_triggered();
+    void on_butBold_clicked();
 };
 #endif // MAINWINDOW_H
