@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QComboBox>
+#include <QFont>
 
 namespace Ui {
 class MainWindow;
@@ -61,7 +62,8 @@ private slots:
     void on_actionSave_triggered();
     void on_butRedo_clicked();
     void on_butUndo_clicked();
-    void on_actionToolBar_triggered();
-    void on_butBold_clicked();
+    void on_butItalic_clicked(bool checked);
+    void on_butBold_clicked(bool checked);
+    void on_butUnderL_clicked(bool checked);
 };
 #endif // MAINWINDOW_H

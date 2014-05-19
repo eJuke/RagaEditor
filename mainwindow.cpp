@@ -165,3 +165,25 @@ void MainWindow::on_butUndo_clicked()
     ui->textEdit->undo();
 }
 
+void MainWindow::on_butItalic_clicked(bool checked)
+{
+    if(checked)
+        ui->textEdit->setFontItalic(1);
+    else
+        ui->textEdit->setFontItalic(0);
+}
+
+
+
+void MainWindow::on_butBold_clicked(bool checked)
+{
+    if(checked)
+        ui->textEdit->setFontWeight(99);
+    else
+        ui->textEdit->setFontWeight(10);
+}
+
+void MainWindow::on_butUnderL_clicked(bool checked)
+{
+    ui->textEdit->setFontUnderline(checked);
+}
