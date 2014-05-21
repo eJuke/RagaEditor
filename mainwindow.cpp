@@ -210,11 +210,21 @@ void MainWindow::buttons() {
     else
         ui->butBold->setChecked(false);
     if(ui->textEdit->fontItalic()==true)
-         ui->butItalic->setChecked(true);
+        ui->butItalic->setChecked(true);
     else
-         ui->butItalic->setChecked(false);
+        ui->butItalic->setChecked(false);
     if(ui->textEdit->fontUnderline()==true)
-            ui->butUnderL->setChecked(true);
-       else
-            ui->butUnderL->setChecked(false);
+        ui->butUnderL->setChecked(true);
+    else
+        ui->butUnderL->setChecked(false);
+}
+
+void MainWindow::on_butFontDown_clicked()
+{
+
+}
+
+void MainWindow::on_butFontUp_clicked()
+{
+
 }

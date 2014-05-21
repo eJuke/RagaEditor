@@ -69,5 +69,7 @@ private slots:
     void action_search();
     void action_search_and_replace();
     void buttons ();
+    void on_butFontDown_clicked();
+    void on_butFontUp_clicked();
 };
 #endif // MAINWINDOW_H

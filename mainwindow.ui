@@ -451,6 +451,9 @@ image:none;
             <height>36</height>
            </size>
           </property>
+          <property name="statusTip">
+           <string>Search</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
@@ -471,6 +474,58 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolSearch.png</normaloff>:/tools/ToolBar/ToolSearch.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="butFontDown">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="statusTip">
+           <string>Decrease font size</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolFontDown.png</normaloff>:/tools/ToolBar/ToolFontDown.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -819,6 +874,58 @@ image:none;
           <attribute name="buttonGroup">
            <string notr="true">AllignGroup</string>
           </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="butFontUp">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="statusTip">
+           <string>Increase font size</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolFontUp.png</normaloff>:/tools/ToolBar/ToolFontUp.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
