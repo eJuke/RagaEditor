@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow){
         ui->setupUi(this);
+        ui->textEdit->setFontPointSize(8);
         connect(ui->textEdit,SIGNAL(cursorPositionChanged()),this,SLOT(buttons()));
 }
 
@@ -221,10 +222,10 @@ void MainWindow::buttons() {
 
 void MainWindow::on_butFontDown_clicked()
 {
-
+    ui->textEdit->setFontPointSize(ui->textEdit->fontPointSize()-1);
 }
 
 void MainWindow::on_butFontUp_clicked()
 {
-
+    ui->textEdit->setFontPointSize(ui->textEdit->fontPointSize()+1);
 }
