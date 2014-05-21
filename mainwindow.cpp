@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow){
         ui->setupUi(this);
         ui->textEdit->setFontPointSize(8);
-        connect(ui->textEdit,SIGNAL(cursorPositionChanged()),this,SLOT(buttons()));
+        connect(ui->textEdit,SIGNAL(cursorPositionChanged()),
+                this,SLOT(buttons()));
 }
 
 
@@ -23,24 +24,18 @@ void MainWindow::on_actionQuit_2_triggered(){
 
 //Open File
 void MainWindow::on_actionOpen_triggered(){
-
     QString FilePath = QFileDialog::getOpenFileName(this, tr("Open File"), "",
             tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; Rich Text Format file (*.rtf);;All files (*.*)"));
-
         if (FilePath != "")
         {
             QFile file(FilePath);
-
             if (!file.open(QIODevice::ReadOnly))
             {
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
                 return;
             }
-
             QTextStream text(&file);
-
             ui->textEdit->setText(text.readAll());
-
             file.close();
         }
 }
@@ -73,20 +68,16 @@ void MainWindow::on_actionAbout_triggered(){
 //Save File
 void MainWindow::on_actionSave_triggered()
 {
-
     QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
         tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; html (*.html)"));
-
         if (Save_pat != "")
         {
             QFile file(Save_pat);
-
             if (!file.open(QIODevice::WriteOnly))
             {
                 QMessageBox::critical(this,tr("Error"),tr("Error"));
                 return;
             }
-
             else
             {
                 QTextStream stream(&file);
@@ -113,9 +104,13 @@ void MainWindow::on_butUndo_clicked()
 void MainWindow::on_butItalic_clicked(bool checked)
 {
     if(checked)
+    {
         ui->textEdit->setFontItalic(1);
+    }
     else
+    {
         ui->textEdit->setFontItalic(0);
+    }
 }
 
 
@@ -123,9 +118,13 @@ void MainWindow::on_butItalic_clicked(bool checked)
 void MainWindow::on_butBold_clicked(bool checked)
 {
     if(checked)
+    {
         ui->textEdit->setFontWeight(99);
+    }
     else
+    {
         ui->textEdit->setFontWeight(10);
+    }
 }
 
 void MainWindow::on_butUnderL_clicked(bool checked)
@@ -136,25 +135,33 @@ void MainWindow::on_butUnderL_clicked(bool checked)
 void MainWindow::on_butAlLeft_clicked(bool checked)
 {
     if (checked)
-    ui->textEdit->setAlignment(Qt::AlignLeft);
+    {
+        ui->textEdit->setAlignment(Qt::AlignLeft);
+    }
 }
 
 void MainWindow::on_butAlCenter_clicked(bool checked)
 {
     if (checked)
-    ui->textEdit->setAlignment(Qt::AlignCenter);
+    {
+        ui->textEdit->setAlignment(Qt::AlignCenter);
+    }
 }
 
 void MainWindow::on_butAlRight_clicked(bool checked)
 {
     if (checked)
-    ui->textEdit->setAlignment(Qt::AlignRight);
+    {
+        ui->textEdit->setAlignment(Qt::AlignRight);
+    }
 }
 
 void MainWindow::on_butAlJust_clicked(bool checked)
 {
     if (checked)
-    ui->textEdit->setAlignment(Qt::AlignJustify);
+    {
+        ui->textEdit->setAlignment(Qt::AlignJustify);
+    }
 }
 
 void MainWindow::on_butSearch_clicked()
@@ -199,25 +206,45 @@ void MainWindow::action_search_and_replace(){
 
 void MainWindow::buttons() {
     if(ui->textEdit->alignment()==Qt::AlignRight)
+    {
         ui->butAlRight->setChecked(true);
+    }
     if(ui->textEdit->alignment()==Qt::AlignLeft)
+    {
         ui->butAlLeft->setChecked(true);
+    }
     if(ui->textEdit->alignment()==Qt::AlignCenter)
+    {
         ui->butAlCenter->setChecked(true);
+    }
     if(ui->textEdit->alignment()==Qt::AlignJustify)
+    {
         ui->butAlJust->setChecked(true);
+    }
     if (ui->textEdit->fontWeight()==99)
+    {
         ui->butBold->setChecked(true);
+    }
     else
+    {
         ui->butBold->setChecked(false);
+    }
     if(ui->textEdit->fontItalic()==true)
+    {
         ui->butItalic->setChecked(true);
+    }
     else
+    {
         ui->butItalic->setChecked(false);
+    }
     if(ui->textEdit->fontUnderline()==true)
+    {
         ui->butUnderL->setChecked(true);
+    }
     else
+    {
         ui->butUnderL->setChecked(false);
+    }
 }
 
 void MainWindow::on_butFontDown_clicked()
