@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow){
         ui->setupUi(this);
+        connect(ui->textEdit,SIGNAL(cursorPositionChanged()),this,SLOT(buttons()));
 }
 
 
@@ -53,62 +54,8 @@ void MainWindow::on_actionStatusBar_triggered(bool checked){
     if(!checked) ui->statusBar->close();
     else         ui->statusBar->show();
 }
-//Help_sets
-
-void MainWindow::on_actionSettings_triggered()
-{
-    QWidget *settings = new QWidget;
-    //setting an edit mode
-    str_sets = new QString;
-    setting = new QFile(".\\settings.txt",this);
-    setting->open(QIODevice::ReadWrite | QIODevice::Text);
-    QTextStream in(setting);
-    in >> *str_sets;
-    setting->close();
-        set_Mode_text = new QLabel("Choose a mode:");
-        set_ModeA = new QComboBox;
-        set_ModeA->addItem("Code Edit");
-        set_ModeA->addItem("Text Edit");
-        set_Theme_text = new QLabel("Theme:");
-        set_ThemeA = new QComboBox;
-        set_ThemeA->addItem("Dark");
-        set_ThemeA->addItem("Bright");
-        set_Lang_text = new QLabel("Language:");
-        set_LangA = new QComboBox;
-        set_LangA->addItem("English");
-        set_LangA->addItem("Russian");
-        set_apply = new QPushButton("Apply",this);
-        set_decline = new QPushButton("Decline",this);
-        set_apply->setMinimumSize(60,30);
-        set_decline->setMinimumSize(60,30);
-        set_apply->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-        set_decline->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-     /*   connect(set_ModeA,SIGNAL(activated(1)),this,SLOT(change_EditMode(true)));
-        connect(set_ModeA,SIGNAL(activated(2)),this,SLOT(change_EditMode(false)));*/
-    //compositiona
-        QVBoxLayout *set = new QVBoxLayout;
-        QHBoxLayout *set1_1 = new QHBoxLayout;
-        QHBoxLayout *set2_1 = new QHBoxLayout;
-        QHBoxLayout *set3_1 = new QHBoxLayout;
-        QHBoxLayout *setLast_1 = new QHBoxLayout;
-    set1_1->addWidget(set_Mode_text);
-    set1_1->addWidget(set_ModeA);
-    set2_1->addWidget(set_Theme_text);
-    set2_1->addWidget(set_ThemeA);
-    set3_1->addWidget(set_Lang_text);
-    set3_1->addWidget(set_LangA);
-    setLast_1->addWidget(set_apply);
-    setLast_1->addWidget(set_decline);
-    setLast_1->setAlignment(set_apply,Qt::AlignRight);
-    set->addLayout(set1_1);
-    set->addLayout(set2_1);
-    set->addLayout(set3_1);
-    set->addLayout(setLast_1);
 
 
-    settings->setLayout(set);
-    settings->show();
-}
 void MainWindow::on_actionAbout_triggered(){
     QWidget *about = new QWidget;
     about_pic = new QLabel;
@@ -120,9 +67,6 @@ void MainWindow::on_actionAbout_triggered(){
     about->setLayout(aboutLayout);
     about->setFixedSize(400,400);
     about->show();
-}
-void MainWindow::change_EditMode(bool x){
-    *SetMode = x;
 }
 
 //Save File
@@ -190,21 +134,25 @@ void MainWindow::on_butUnderL_clicked(bool checked)
 
 void MainWindow::on_butAlLeft_clicked(bool checked)
 {
+    if (checked)
     ui->textEdit->setAlignment(Qt::AlignLeft);
 }
 
 void MainWindow::on_butAlCenter_clicked(bool checked)
 {
+    if (checked)
     ui->textEdit->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::on_butAlRight_clicked(bool checked)
 {
+    if (checked)
     ui->textEdit->setAlignment(Qt::AlignRight);
 }
 
 void MainWindow::on_butAlJust_clicked(bool checked)
 {
+    if (checked)
     ui->textEdit->setAlignment(Qt::AlignJustify);
 }
 
@@ -214,18 +162,24 @@ void MainWindow::on_butSearch_clicked()
     QVBoxLayout *search = new QVBoxLayout;
     QHBoxLayout *search_1 = new QHBoxLayout;
     QHBoxLayout *search_2 = new QHBoxLayout;
-    QLabel *search_text = new QLabel("Enter the search request:");
+    QHBoxLayout *search_3 = new QHBoxLayout;
+    QLabel *search_text = new QLabel("Find:");
+    QLabel *replace_text = new QLabel("Replace by:");
     QLineEdit *search_request = new QLineEdit;
+    QLineEdit *replace_request = new QLineEdit;
     search_1->addWidget(search_text);
     search_1->addWidget(search_request);
-    search_find = new QPushButton("Find",this);
-    search_find_replace = new QPushButton("Find and Replace",this);
+    search_2->addWidget(replace_text);
+    search_2->addWidget(replace_request);
+    search_find = new QPushButton("Find next",this);
+    search_find_replace = new QPushButton("Replace all",this);
     search_cancel = new QPushButton("Cancel", this);
-    search_2->addWidget(search_find);
-    search_2->addWidget(search_find_replace);
-    search_2->addWidget(search_cancel);
+    search_3->addWidget(search_find);
+    search_3->addWidget(search_find_replace);
+    search_3->addWidget(search_cancel);
     search->addLayout(search_1);
     search->addLayout(search_2);
+    search->addLayout(search_3);
     searchWindow->setLayout(search);
     searchWindow->show();
     connect(search_cancel,SIGNAL(clicked()),searchWindow,SLOT(close()));
@@ -240,4 +194,27 @@ void MainWindow::action_search(){
 
 void MainWindow::action_search_and_replace(){
 
+}
+
+void MainWindow::buttons() {
+    if(ui->textEdit->alignment()==Qt::AlignRight)
+        ui->butAlRight->setChecked(true);
+    if(ui->textEdit->alignment()==Qt::AlignLeft)
+        ui->butAlLeft->setChecked(true);
+    if(ui->textEdit->alignment()==Qt::AlignCenter)
+        ui->butAlCenter->setChecked(true);
+    if(ui->textEdit->alignment()==Qt::AlignJustify)
+        ui->butAlJust->setChecked(true);
+    if (ui->textEdit->fontWeight()==99)
+        ui->butBold->setChecked(true);
+    else
+        ui->butBold->setChecked(false);
+    if(ui->textEdit->fontItalic()==true)
+         ui->butItalic->setChecked(true);
+    else
+         ui->butItalic->setChecked(false);
+    if(ui->textEdit->fontUnderline()==true)
+            ui->butUnderL->setChecked(true);
+       else
+            ui->butUnderL->setChecked(false);
 }

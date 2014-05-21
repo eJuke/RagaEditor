@@ -129,7 +129,6 @@ QMenu::item:selected{
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
-    <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="styleSheet">
