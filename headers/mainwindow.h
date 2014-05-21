@@ -16,6 +16,7 @@
 #include <QTextStream>
 #include <QComboBox>
 #include <QFont>
+#include <QLineEdit>
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,12 @@ private:
     //File_paths
     QString *FilePath;
     QString *Save_path;
+    QWidget *searchWindow;
+    QPushButton *search_find;
+    QPushButton *search_find_replace;
+    QPushButton *search_cancel;
+
+
 
 
 private slots:
@@ -65,5 +72,12 @@ private slots:
     void on_butItalic_clicked(bool checked);
     void on_butBold_clicked(bool checked);
     void on_butUnderL_clicked(bool checked);
+    void on_butAlLeft_clicked(bool checked);
+    void on_butAlCenter_clicked(bool checked);
+    void on_butAlRight_clicked(bool checked);
+    void on_butAlJust_clicked(bool checked);
+    void on_butSearch_clicked();
+    void action_search();
+    void action_search_and_replace();
 };
 #endif // MAINWINDOW_H

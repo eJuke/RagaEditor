@@ -130,7 +130,7 @@ void MainWindow::on_actionSave_triggered()
 {
 
     QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
-        tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; html (*.htm, *.html)"));
+        tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; html (*.html)"));
 
         if (Save_pat != "")
         {
@@ -186,4 +186,58 @@ void MainWindow::on_butBold_clicked(bool checked)
 void MainWindow::on_butUnderL_clicked(bool checked)
 {
     ui->textEdit->setFontUnderline(checked);
+}
+
+void MainWindow::on_butAlLeft_clicked(bool checked)
+{
+    ui->textEdit->setAlignment(Qt::AlignLeft);
+}
+
+void MainWindow::on_butAlCenter_clicked(bool checked)
+{
+    ui->textEdit->setAlignment(Qt::AlignCenter);
+}
+
+void MainWindow::on_butAlRight_clicked(bool checked)
+{
+    ui->textEdit->setAlignment(Qt::AlignRight);
+}
+
+void MainWindow::on_butAlJust_clicked(bool checked)
+{
+    ui->textEdit->setAlignment(Qt::AlignJustify);
+}
+
+void MainWindow::on_butSearch_clicked()
+{
+    searchWindow = new QWidget;
+    QVBoxLayout *search = new QVBoxLayout;
+    QHBoxLayout *search_1 = new QHBoxLayout;
+    QHBoxLayout *search_2 = new QHBoxLayout;
+    QLabel *search_text = new QLabel("Enter the search request:");
+    QLineEdit *search_request = new QLineEdit;
+    search_1->addWidget(search_text);
+    search_1->addWidget(search_request);
+    search_find = new QPushButton("Find",this);
+    search_find_replace = new QPushButton("Find and Replace",this);
+    search_cancel = new QPushButton("Cancel", this);
+    search_2->addWidget(search_find);
+    search_2->addWidget(search_find_replace);
+    search_2->addWidget(search_cancel);
+    search->addLayout(search_1);
+    search->addLayout(search_2);
+    searchWindow->setLayout(search);
+    searchWindow->show();
+    connect(search_cancel,SIGNAL(clicked()),searchWindow,SLOT(close()));
+    connect(search_find,SIGNAL(clicked()),this,SLOT(action_search()));
+    connect(search_find_replace,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
+
+
+}
+void MainWindow::action_search(){
+
+}
+
+void MainWindow::action_search_and_replace(){
+
 }

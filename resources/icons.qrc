@@ -18,6 +18,7 @@
         <file>ToolBar/ToolUnderLUnSel.png</file>
         <file>ToolBar/ToolUndo.png</file>
         <file>ToolBar/ToolUndoUnSel.png</file>
+        <file>ToolBar/ToolSearch.png</file>
     </qresource>
     <qresource prefix="/menu">
         <file>MenuBar/MenuExit.png</file>
