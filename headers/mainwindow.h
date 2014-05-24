@@ -17,7 +17,11 @@
 #include <QComboBox>
 #include <QFont>
 #include <QLineEdit>
-#include <QTextDocument>
+#include <QTextCursor>
+#include <QDialog>
+#include <QMessageBox>
+#include <QCheckBox>
+
 
 namespace Ui {
 class MainWindow;
@@ -42,10 +46,18 @@ private:
     QString *Save_path;
     //Search
     QWidget *searchWindow;
-    QPushButton *search_find;
+    QLineEdit *search_request;
+    QLineEdit *replace_request;
+    QCheckBox *replace_enabled;
+    QPushButton *search_findForward;
+    QPushButton *search_findBackward;
     QPushButton *search_find_replace;
     QPushButton *search_cancel;
-
+    QString *search_value;
+    QLabel *search_results;
+    QLabel *search_results_main;
+    int search_results_count;
+    bool chk;
 
 
 
@@ -66,8 +78,13 @@ private slots:
     void on_butAlRight_clicked(bool checked);
     void on_butAlJust_clicked(bool checked);
     void on_butSearch_clicked();
-    void action_search();
+    void action_searchForward();
+    void action_searchBackward();
     void action_search_and_replace();
+    void Search_TextChanged(QString str_search);
+    void Replace_TextChanged();
+    void Search_Results_count();
+    void Search_Replace_match();
     void buttons ();
     void on_butFontDown_clicked();
     void on_butFontUp_clicked();

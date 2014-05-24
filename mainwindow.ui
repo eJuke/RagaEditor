@@ -481,6 +481,9 @@ image:none;
             <height>24</height>
            </size>
           </property>
+          <property name="shortcut">
+           <string>Ctrl+F</string>
+          </property>
           <property name="flat">
            <bool>true</bool>
           </property>
