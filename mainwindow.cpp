@@ -188,12 +188,15 @@ void MainWindow::on_butSearch_clicked()
     search_findBackward->setEnabled(0);
     search_findForward = new QPushButton("Find next",this);
     search_findForward->setEnabled(0);
-    search_find_replace = new QPushButton("Replace all",this);
+    search_find_replace = new QPushButton("Replace");
     search_find_replace->setEnabled(0);
+    search_find_replace_all = new QPushButton("Replace all",this);
+    search_find_replace_all->setEnabled(0);
     search_cancel = new QPushButton("Cancel", this);
     search_3->addWidget(search_findBackward);
     search_3->addWidget(search_findForward);
     search_3->addWidget(search_find_replace);
+    search_3->addWidget(search_find_replace_all);
     search_3->addWidget(search_cancel);
     search_4->addWidget(search_results);
     search->addLayout(search_1);
@@ -201,37 +204,57 @@ void MainWindow::on_butSearch_clicked()
     search->addLayout(search_3);
     search->addLayout(search_4);
     searchWindow->setLayout(search);
-    searchWindow->setFixedSize(400,125);
+    searchWindow->setFixedSize(500,125);
     searchWindow->setWindowTitle("Text Search");
     searchWindow->show();
     connect(search_request,SIGNAL(textChanged(QString)),this,SLOT(Search_Results_count()));
     connect(search_request,SIGNAL(textChanged(QString)),this,SLOT(Search_TextChanged(QString)));
     connect(replace_enabled,SIGNAL(clicked(bool)),this,SLOT(Replace_CheckBox_clicked()));
     connect(search_cancel,SIGNAL(clicked()),searchWindow,SLOT(close()));
+    connect(search_cancel,SIGNAL(clicked()),this,SLOT(Search_close_clicked()));
     connect(search_findBackward,SIGNAL(clicked()),this,SLOT(action_searchBackward()));
     connect(search_findForward,SIGNAL(clicked()),this,SLOT(action_searchForward()));
-    connect(search_find_replace,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
+    connect(search_find_replace,SIGNAL(clicked()),this,SLOT(Replace_once()));
+    connect(search_find_replace_all,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
 }
 
 void MainWindow::Search_Results_count(){
-
+    QTextCursor cursor(ui->textEdit->document());
+    ui->textEdit->selectAll();
+    ui->textEdit->setTextBackgroundColor(Qt::transparent);
     search_results_count = 0;
     if(!((search_request->text()).isEmpty())){
-    QTextCursor cursor(ui->textEdit->document());
     ui->textEdit->setTextCursor(cursor);
     while (ui->textEdit->find(search_request->text())){
         search_results_count++;
+        ui->textEdit->setTextBackgroundColor(QColor(0,145,255));
     }
     QString tmp = QString::number(search_results_count);
     search_results->setText("<font color='darkgreen'>" + tmp + " matches found</font>");
+    ui->textEdit->setTextCursor(cursor);
     } else {
         search_results->setText("Waiting for enter search variable...");
+        ui->textEdit->setTextCursor(cursor);
     }
+}
 
+void MainWindow::Search_close_clicked(){
+    QTextCursor cursor(ui->textEdit->document());
+    ui->textEdit->selectAll();
+    ui->textEdit->setTextBackgroundColor(Qt::transparent);
+    ui->textEdit->setTextCursor(cursor);
+}
+
+void MainWindow::Replace_once(){
+    if(ui->textEdit->textCursor().hasSelection()){
+    ui->textEdit->textCursor().insertText(replace_request->text());
+    Search_Results_count();
+    }
 }
 
 void MainWindow::Replace_CheckBox_clicked(){
     replace_request->setEnabled((replace_enabled->isChecked()));
+    search_find_replace_all->setEnabled((replace_enabled->isChecked()));
     search_find_replace->setEnabled((replace_enabled->isChecked()));
 }
 

@@ -52,12 +52,11 @@ private:
     QPushButton *search_findForward;
     QPushButton *search_findBackward;
     QPushButton *search_find_replace;
+    QPushButton *search_find_replace_all;
     QPushButton *search_cancel;
     QString *search_value;
     QLabel *search_results;
-    QLabel *search_results_main;
     int search_results_count;
-    bool chk;
 
 
 
@@ -84,6 +83,8 @@ private slots:
     void Search_TextChanged(QString str_search);
     void Replace_CheckBox_clicked();
     void Search_Results_count();
+    void Search_close_clicked();
+    void Replace_once();
     void buttons ();
     void on_butFontDown_clicked();
     void on_butFontUp_clicked();
