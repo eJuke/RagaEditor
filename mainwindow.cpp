@@ -204,31 +204,17 @@ void MainWindow::on_butSearch_clicked()
     searchWindow->setFixedSize(400,125);
     searchWindow->setWindowTitle("Text Search");
     searchWindow->show();
-    connect(search_request,SIGNAL(textChanged(QString)),this,SLOT(Search_Replace_match()));
-    connect(replace_request,SIGNAL(textChanged(QString)),this,SLOT(Search_Replace_match()));
     connect(search_request,SIGNAL(textChanged(QString)),this,SLOT(Search_Results_count()));
     connect(search_request,SIGNAL(textChanged(QString)),this,SLOT(Search_TextChanged(QString)));
-    connect(replace_enabled,SIGNAL(clicked(bool)),this,SLOT(Replace_TextChanged()));
+    connect(replace_enabled,SIGNAL(clicked(bool)),this,SLOT(Replace_CheckBox_clicked()));
     connect(search_cancel,SIGNAL(clicked()),searchWindow,SLOT(close()));
     connect(search_findBackward,SIGNAL(clicked()),this,SLOT(action_searchBackward()));
     connect(search_findForward,SIGNAL(clicked()),this,SLOT(action_searchForward()));
     connect(search_find_replace,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
 }
 
-void MainWindow::Search_Replace_match(){
-    if ((search_request->text()) == (replace_request->text())){
-        search_results->setText("<font color='darkred'>Values in \"Find\" and \"Replace by\" must be different!</font>");
-        chk = 0;
-    }
-    else
-    {
-        chk = 1;
-        Search_Results_count();
-    }
-}
-
 void MainWindow::Search_Results_count(){
-    if(chk){
+
     search_results_count = 0;
     if(!((search_request->text()).isEmpty())){
     QTextCursor cursor(ui->textEdit->document());
@@ -241,10 +227,10 @@ void MainWindow::Search_Results_count(){
     } else {
         search_results->setText("Waiting for enter search variable...");
     }
-    }
+
 }
 
-void MainWindow::Replace_TextChanged(){
+void MainWindow::Replace_CheckBox_clicked(){
     replace_request->setEnabled((replace_enabled->isChecked()));
     search_find_replace->setEnabled((replace_enabled->isChecked()));
 }
@@ -285,6 +271,9 @@ void MainWindow::action_search_and_replace(){
         warn_search_and_replace.setText("Can't find variable: \"" + (search_request->text()) + "\"");
         warn_search_and_replace.exec();
     }
+    } else {
+        warn_search_and_replace.setText("Values in \"Find\" and \"Replace by\" must be different!");
+        warn_search_and_replace.exec();
     }
     Search_Results_count();
 }

@@ -82,9 +82,8 @@ private slots:
     void action_searchBackward();
     void action_search_and_replace();
     void Search_TextChanged(QString str_search);
-    void Replace_TextChanged();
+    void Replace_CheckBox_clicked();
     void Search_Results_count();
-    void Search_Replace_match();
     void buttons ();
     void on_butFontDown_clicked();
     void on_butFontUp_clicked();
