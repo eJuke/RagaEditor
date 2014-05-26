@@ -197,6 +197,7 @@ void MainWindow::on_butAlJust_clicked(bool checked)
 void MainWindow::on_butSearch_clicked()
 {
     searchWindow = new QWidget;
+    searchWindow->setWindowFlags(Qt::WindowMinimizeButtonHint);
     QVBoxLayout *search = new QVBoxLayout;
     QHBoxLayout *search_1 = new QHBoxLayout;
     QHBoxLayout *search_2 = new QHBoxLayout;
