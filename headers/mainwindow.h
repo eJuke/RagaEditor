@@ -98,6 +98,5 @@ private slots:
     void on_butFontUp_clicked();
     void on_actionSyntax_triggered();
     void Save_check();
-    void saved_file_close_check();
 };
 #endif // MAINWINDOW_H

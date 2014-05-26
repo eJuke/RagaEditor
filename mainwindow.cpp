@@ -249,13 +249,11 @@ void MainWindow::on_butSearch_clicked()
     connect(search_find_replace_all,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
 }
 
+
+
 void MainWindow::Save_check(){
     save_check = true;
     save_done = false;
-}
-
-void MainWindow::saved_file_close_check(){
-
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
