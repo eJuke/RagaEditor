@@ -21,7 +21,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(27, 27, 27); 
-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
 </string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -150,6 +150,7 @@ QMenu::item:selected{
     </property>
     <addaction name="actionToolBar"/>
     <addaction name="actionStatusBar"/>
+    <addaction name="actionSyntax"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuWindow"/>
@@ -1020,6 +1021,14 @@ image:none;
    </property>
    <property name="text">
     <string>StatusBar</string>
+   </property>
+  </action>
+  <action name="actionSyntax">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Syntax</string>
    </property>
   </action>
  </widget>

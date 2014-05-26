@@ -15,7 +15,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    syntax_check.cpp
 
 HEADERS  += \
     headers/syntax_check.h \

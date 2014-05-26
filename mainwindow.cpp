@@ -361,3 +361,11 @@ void MainWindow::on_butFontUp_clicked()
 {
     ui->textEdit->setFontPointSize(ui->textEdit->fontPointSize()+1);
 }
+
+void MainWindow::on_actionSyntax_triggered()
+{
+    syntax = new Syntax(ui->textEdit->document());
+
+    QFile file("mainwindow.h");
+    if (file.open(QFile::ReadOnly | QFile::Text)) ui->textEdit->setPlainText(file.readAll());
+}

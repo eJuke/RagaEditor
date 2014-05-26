@@ -22,6 +22,7 @@
 #include <QMessageBox>
 #include <QCheckBox>
 #include <QMouseEvent>
+#include "headers/syntax_check.h"
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +60,8 @@ private:
     int search_results_count;
     void closeEvent(QCloseEvent *event);
 
+    Syntax *syntax;
+
 
 
 private slots:
@@ -89,5 +92,6 @@ private slots:
     void buttons ();
     void on_butFontDown_clicked();
     void on_butFontUp_clicked();
+    void on_actionSyntax_triggered();
 };
 #endif // MAINWINDOW_H
