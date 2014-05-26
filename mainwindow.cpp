@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent):
         ui->textEdit->setFontPointSize(8);
         connect(ui->textEdit,SIGNAL(cursorPositionChanged()),
                 this,SLOT(buttons()));
+        connect(ui->textEdit,SIGNAL(textChanged()),this,SLOT(Save_check()));
+        save_check = false;
+        save_done = false;
 }
 
 
@@ -19,7 +22,30 @@ MainWindow::~MainWindow(){
 
 //File_sets
 void MainWindow::on_actionQuit_2_triggered(){
-    qApp->exit();
+    if (save_check){
+    QMessageBox CloseDialog;
+        CloseDialog.setText(tr("Do you want to save file before exit? "));
+        CloseDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+        CloseDialog.setDefaultButton(QMessageBox::Cancel);
+        CloseDialog.setStyleSheet("color: #fff; background-color: #303030");
+        int ret = CloseDialog.exec();
+        switch (ret) {
+        case QMessageBox::No:
+            qApp->exit();
+            break;
+        case QMessageBox::Yes:
+            on_actionSave_triggered();
+            if (save_done)
+            qApp->exit();
+            break;
+        case QMessageBox::Cancel:
+            break;
+        default:
+            break;
+        }
+    } else {
+        qApp->exit();
+    }
 }
 
 //Open File
@@ -37,6 +63,8 @@ void MainWindow::on_actionOpen_triggered(){
             QTextStream text(&file);
             ui->textEdit->setText(text.readAll());
             file.close();
+            save_check = false;
+            save_done = true;
         }
 }
 
@@ -87,6 +115,8 @@ void MainWindow::on_actionSave_triggered()
                 stream.flush();
 
                 file.close();
+                save_check = false;
+                save_done = true;
             }
         }
 }
@@ -218,14 +248,37 @@ void MainWindow::on_butSearch_clicked()
     connect(search_find_replace_all,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
 }
 
+void MainWindow::Save_check(){
+    save_check = true;
+    save_done = false;
+}
+
+void MainWindow::saved_file_close_check(){
+
+}
+
 void MainWindow::closeEvent(QCloseEvent *event){
+    if (save_check){
     QMessageBox CloseDialog;
-        CloseDialog.setText(tr(" Do you want to close the program? "));
-        CloseDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No);
-        CloseDialog.setDefaultButton(QMessageBox::No);
+        CloseDialog.setText(tr("Do you want to save file before exit? "));
+        CloseDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+        CloseDialog.setDefaultButton(QMessageBox::Cancel);
         CloseDialog.setStyleSheet("color: #fff; background-color: #303030");
         int ret = CloseDialog.exec();
-        if (ret ==  QMessageBox::No)  event->ignore();
+        switch (ret) {
+        case QMessageBox::No:
+            break;
+        case QMessageBox::Yes:
+            on_actionSave_triggered();
+            if (!save_done)
+            event->ignore();
+            break;
+        case QMessageBox::Cancel:
+            event->ignore();
+        default:
+            break;
+        }
+    }
 }
 
 void MainWindow::Search_Results_count(){

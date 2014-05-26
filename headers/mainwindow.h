@@ -45,6 +45,9 @@ private:
     //File_paths
     QString *FilePath;
     QString *Save_path;
+    bool save_check;
+    bool save_done;
+
     //Search
     QWidget *searchWindow;
     QLineEdit *search_request;
@@ -58,6 +61,7 @@ private:
     QString *search_value;
     QLabel *search_results;
     int search_results_count;
+
     void closeEvent(QCloseEvent *event);
 
     Syntax *syntax;
@@ -93,5 +97,7 @@ private slots:
     void on_butFontDown_clicked();
     void on_butFontUp_clicked();
     void on_actionSyntax_triggered();
+    void Save_check();
+    void saved_file_close_check();
 };
 #endif // MAINWINDOW_H
