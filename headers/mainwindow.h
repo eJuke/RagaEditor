@@ -21,7 +21,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QCheckBox>
-
+#include <QMouseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -57,6 +57,7 @@ private:
     QString *search_value;
     QLabel *search_results;
     int search_results_count;
+    void closeEvent(QCloseEvent *event);
 
 
 
