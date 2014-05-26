@@ -216,7 +216,6 @@ void MainWindow::on_butSearch_clicked()
     connect(search_findForward,SIGNAL(clicked()),this,SLOT(action_searchForward()));
     connect(search_find_replace,SIGNAL(clicked()),this,SLOT(Replace_once()));
     connect(search_find_replace_all,SIGNAL(clicked()),this,SLOT(action_search_and_replace()));
-
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
