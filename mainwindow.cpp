@@ -219,11 +219,13 @@ void MainWindow::on_butSearch_clicked()
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
-    QMessageBox::StandardButton ret;
-        ret = QMessageBox::question( this,  QApplication::applicationName(), tr(" Do you want to close programm ? "),
-                                     QMessageBox::Yes | QMessageBox::No , QMessageBox::No );
-        if (ret == QMessageBox::No)
-            event->ignore();
+    QMessageBox CloseDialog;
+        CloseDialog.setText(tr(" Do you want to close the program? "));
+        CloseDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No);
+        CloseDialog.setDefaultButton(QMessageBox::No);
+        CloseDialog.setStyleSheet("color: #fff; background-color: #303030");
+        int ret = CloseDialog.exec();
+        if (ret ==  QMessageBox::No)  event->ignore();
 }
 
 void MainWindow::Search_Results_count(){
