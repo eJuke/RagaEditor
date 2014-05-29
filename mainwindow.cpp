@@ -501,6 +501,9 @@ void MainWindow::on_actionNew_triggered()
             default:
                 break;
         }
+    } else {
+        ui->textEdit->clear();
+        save_check = 0;
     }
 }
 
