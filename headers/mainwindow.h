@@ -93,10 +93,11 @@ private slots:
     void Search_Results_count();
     void Search_close_clicked();
     void Replace_once();
-    void buttons ();
-    void on_butFontDown_clicked();
-    void on_butFontUp_clicked();
-    void on_actionSyntax_triggered();
+    void buttons();
+    void on_actionSyntax_triggered(bool check);
     void Save_check();
+    void on_actionNew_triggered();
+    void on_fontSizeBox_valueChanged(int arg1);
+    void on_fontComboBox_currentFontChanged(const QFont &f);
 };
 #endif // MAINWINDOW_H

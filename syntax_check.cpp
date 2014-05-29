@@ -6,8 +6,8 @@ Syntax::Syntax(QTextDocument *parent)
 {
     SyntaxRule rule;
 
-    keywordFormat.setForeground(QColor(239,217,23));
-    keywordFormat.setFontWeight(QFont::Bold);
+    keywordFormat.setForeground(QColor(230,102,34));
+//    keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
     keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b"
                     << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b"
@@ -18,7 +18,7 @@ Syntax::Syntax(QTextDocument *parent)
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
-                    << "\\bvoid\\b" << "\\bvolatile\\b";
+                    << "\\bvoid\\b" << "\\bvolatile\\b" << "\\binclude\\b";
     foreach (const QString &pattern, keywordPatterns)
     {
         rule.pattern = QRegExp(pattern);

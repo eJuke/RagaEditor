@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow){
         ui->setupUi(this);
+        this->setWindowTitle("RagaEditor");
         ui->textEdit->setFontPointSize(8);
         connect(ui->textEdit,SIGNAL(cursorPositionChanged()),
                 this,SLOT(buttons()));
@@ -51,8 +52,8 @@ void MainWindow::on_actionQuit_2_triggered(){
 //Open File
 void MainWindow::on_actionOpen_triggered(){
     QString FilePath = QFileDialog::getOpenFileName(this, tr("Open File"), "",
-            tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; Rich Text Format file (*.rtf);;All files (*.*)"));
-        if (FilePath != "")
+            tr("Text Files (*.txt);;C++ Files (*.cpp);; HTML (*.html);;All files (*.*)"));
+        if (!FilePath.isEmpty())
         {
             QFile file(FilePath);
             if (!file.open(QIODevice::ReadOnly))
@@ -83,7 +84,7 @@ void MainWindow::on_actionStatusBar_triggered(bool checked){
 void MainWindow::on_actionAbout_triggered(){
     QWidget *about = new QWidget;
     about_pic = new QLabel;
-    about_text = new QLabel("RagaEditor v0.1alpha (c)2014");
+    about_text = new QLabel("RagaEditor v0.2beta (c)2014");
     about_pic->setPixmap(QPixmap::fromImage(QImage(":/about/About_pic.png")));
     QVBoxLayout *aboutLayout = new QVBoxLayout;
     aboutLayout->addWidget(about_pic);
@@ -96,29 +97,53 @@ void MainWindow::on_actionAbout_triggered(){
 //Save File
 void MainWindow::on_actionSave_triggered()
 {
-    QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
-        tr("Text Files (*.txt);;C++ Files (*.cpp *.h);; html (*.html)"));
-        if (Save_pat != "")
+    /*QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
+        tr("Text Files (*.txt);;C++ Files (*.cpp);; html (*.html)"));
+        if (!Save_pat.isEmpty())
         {
             QFile file(Save_pat);
-            if (!file.open(QIODevice::WriteOnly))
-            {
+            if (!file.open(QIODevice::WriteOnly)){
                 QMessageBox::critical(this,tr("Error"),tr("Error"));
                 return;
             }
-            else
-            {
+            else{
                 QTextStream stream(&file);
-
                 stream << ui->textEdit->toPlainText();
-
                 stream.flush();
-
                 file.close();
                 save_check = false;
                 save_done = true;
             }
         }
+        */
+    QFileDialog dialog(this, tr("Save as ..."), "");
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    QStringList filters;
+    filters << "Text Files (*.txt)" << "C++ Files (*.cpp)" << "HTML (*.html)";
+    dialog.setNameFilters(filters);
+    QString Save_pat, selectedFilter;
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        selectedFilter = dialog.selectedNameFilter();
+        Save_pat = dialog.selectedFiles()[0];
+    }
+    if (!Save_pat.isEmpty())
+    {
+        QFile file(Save_pat);
+        if (!file.open(QIODevice::WriteOnly)){
+            QMessageBox::critical(this,tr("Error"),tr("Error"));
+            return;
+        }
+        else{
+            QTextStream stream(&file);
+            if (selectedFilter == "Text Files (*.txt)" || selectedFilter == "C++ Files (*.cpp)")    stream << ui->textEdit->toPlainText();
+            if (selectedFilter == "HTML (*.html)") stream << ui->textEdit->toHtml();
+            stream.flush();
+            file.close();
+            save_check = false;
+            save_done = true;
+        }
+    }
 }
 
 void MainWindow::on_butRedo_clicked()
@@ -404,22 +429,72 @@ void MainWindow::buttons() {
     {
         ui->butUnderL->setChecked(false);
     }
+    ui->fontComboBox->setCurrentFont(ui->textEdit->currentFont());
+    ui->fontSizeBox->setValue(ui->textEdit->fontPointSize());
 }
 
-void MainWindow::on_butFontDown_clicked()
+void MainWindow::on_actionSyntax_triggered(bool check)
 {
-    ui->textEdit->setFontPointSize(ui->textEdit->fontPointSize()-1);
+    if(check){
+        syntax = new Syntax(ui->textEdit->document());
+        QFile file("mainwindow.h");
+        if (file.open(QFile::ReadOnly | QFile::Text)) ui->textEdit->setPlainText(file.readAll());
+        ui->butBold->setDisabled(true);
+        ui->butItalic->setDisabled(true);
+        ui->butUnderL->setDisabled(true);
+        ui->butAlCenter->setDisabled(true);
+        ui->butAlJust->setDisabled(true);
+        ui->butAlLeft->setDisabled(true);
+        ui->butAlRight->setDisabled(true);
+        ui->textEdit->setAlignment(Qt::AlignLeft);
+        ui->textEdit->setFontFamily("Courier");
+        ui->textEdit->setFontPointSize(10);
+        ui->textEdit->setWordWrapMode(QTextOption::NoWrap);
+        ui->fontComboBox->setDisabled(true);
+        ui->fontSizeBox->setDisabled(true);
+    }
+    else{
+        ui->butBold->setEnabled(true);
+        ui->butItalic->setEnabled(true);
+        ui->butUnderL->setEnabled(true);
+        ui->butAlCenter->setEnabled(true);
+        ui->butAlJust->setEnabled(true);
+        ui->butAlLeft->setEnabled(true);
+        ui->butAlRight->setEnabled(true);
+        ui->textEdit->setWordWrapMode(QTextOption::WordWrap);
+        ui->fontComboBox->setEnabled(true);
+        ui->fontSizeBox->setEnabled(true);
+    }
 }
 
-void MainWindow::on_butFontUp_clicked()
+void MainWindow::on_actionNew_triggered()
 {
-    ui->textEdit->setFontPointSize(ui->textEdit->fontPointSize()+1);
+    if (save_check){
+        QMessageBox NewDialog;
+            NewDialog.setWindowTitle("WARNING!");
+            NewDialog.setText(tr("Do u want to continue? \nAll unsaved changes will be lost?"));
+            NewDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No);
+            NewDialog.setDefaultButton(QMessageBox::No);
+            NewDialog.setStyleSheet("color: #fff; background-color: #303030");
+            int res = NewDialog.exec();
+            switch (res) {
+            case QMessageBox::No:
+                break;
+            case QMessageBox::Yes:
+                ui->textEdit->clear();
+                break;
+            default:
+                break;
+        }
+    }
 }
 
-void MainWindow::on_actionSyntax_triggered()
+void MainWindow::on_fontSizeBox_valueChanged(int arg1)
 {
-    syntax = new Syntax(ui->textEdit->document());
+    ui->textEdit->setFontPointSize(arg1);
+}
 
-    QFile file("mainwindow.h");
-    if (file.open(QFile::ReadOnly | QFile::Text)) ui->textEdit->setPlainText(file.readAll());
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
+{
+    ui->textEdit->setCurrentFont(f);
 }

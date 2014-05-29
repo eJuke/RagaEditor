@@ -51,10 +51,26 @@ color: rgb(0, 0, 0);
       </property>
       <item>
        <widget class="QTextEdit" name="textEdit">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color:rgb(56, 56, 56);
-color:white;
+         <string notr="true">QTextEdit{
+	background-color:rgb(56, 56, 56);
+	color:white;
+	background-image: none;
+	image: none;}
+QScrollBar:vertical {
+    border: none;
+    background: #ccc;
+	image:none;
+}
 </string>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOn</enum>
         </property>
        </widget>
       </item>
@@ -150,6 +166,7 @@ QMenu::item:selected{
     </property>
     <addaction name="actionToolBar"/>
     <addaction name="actionStatusBar"/>
+    <addaction name="separator"/>
     <addaction name="actionSyntax"/>
    </widget>
    <addaction name="menuFile"/>
@@ -205,10 +222,10 @@ color:white;</string>
     <widget class="QWidget" name="horizontalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>-1</x>
-       <y>-1</y>
+       <x>0</x>
+       <y>0</y>
        <width>41</width>
-       <height>321</height>
+       <height>201</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -306,63 +323,9 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolBoldUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolBold.png</normalon>:/tools/ToolBar/ToolBoldUnSel.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="butItalic">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="statusTip">
-           <string>Italic text style</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
-}
-QPushButton:pressed {
-background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
-}
-QPushButton:checked{
-background:white;
-image:none;
-}
-
-</string>
-          </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/tools/ToolBar/ToolItalicUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolItalic.png</normalon>:/tools/ToolBar/ToolItalicUnSel.png</iconset>
+            <normalon>:/tools/ToolBar/ToolBold.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolBoldUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolBoldDisabled.png</disabledon>:/tools/ToolBar/ToolBoldUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -418,7 +381,67 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolUnderLUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolUnderL.png</normalon>:/tools/ToolBar/ToolUnderLUnSel.png</iconset>
+            <normalon>:/tools/ToolBar/ToolUnderL.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolUnderLUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolUnderLDisabled.png</disabledon>:/tools/ToolBar/ToolUnderLUnSel.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="butItalic">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>36</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="statusTip">
+           <string>Italic text style</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed {
+background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
+}
+QPushButton:checked{
+background:white;
+image:none;
+}
+
+</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources/icons.qrc">
+            <normaloff>:/tools/ToolBar/ToolItalicUnSel.png</normaloff>
+            <normalon>:/tools/ToolBar/ToolItalic.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolItalicUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolItalicDisabled.png</disabledon>:/tools/ToolBar/ToolItalicUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -493,58 +516,6 @@ image:none;
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="butFontDown">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="statusTip">
-           <string>Decrease font size</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
-}
-QPushButton:pressed {
-background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
-}
-QPushButton:checked{
-background:white;
-image:none;
-}
-
-</string>
-          </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/tools/ToolBar/ToolFontDown.png</normaloff>:/tools/ToolBar/ToolFontDown.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer_3">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -567,7 +538,7 @@ image:none;
        <x>39</x>
        <y>-1</y>
        <width>41</width>
-       <height>321</height>
+       <height>201</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -666,7 +637,9 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolAlLeftUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolAlLeft.png</normalon>:/tools/ToolBar/ToolAlLeftUnSel.png</iconset>
+            <normalon>:/tools/ToolBar/ToolAlLeft.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolAlLeftUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolAlLeftDisabled.png</disabledon>:/tools/ToolBar/ToolAlLeftUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -728,7 +701,9 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolAlCenterUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolAlCenter.png</normalon>:/tools/ToolBar/ToolAlCenterUnSel.png</iconset>
+            <normalon>:/tools/ToolBar/ToolAlCenter.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolAlCenterUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolAlCenterDisabled.png</disabledon>:/tools/ToolBar/ToolAlCenterUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -740,6 +715,9 @@ image:none;
            <bool>true</bool>
           </property>
           <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="default">
            <bool>false</bool>
           </property>
           <property name="flat">
@@ -791,6 +769,8 @@ image:none;
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolAlRightUnSel.png</normaloff>
             <normalon>:/tools/ToolBar/ToolAlRight.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolAlRightUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolAlRightDisabled.png</disabledon>
             <activeoff>:/tools/ToolBar/ToolAlRightUnSel.png</activeoff>
             <activeon>:/tools/ToolBar/ToolAlRight.png</activeon>:/tools/ToolBar/ToolAlRightUnSel.png</iconset>
           </property>
@@ -860,7 +840,9 @@ image:none;
           <property name="icon">
            <iconset resource="resources/icons.qrc">
             <normaloff>:/tools/ToolBar/ToolAlJustUnSel.png</normaloff>
-            <normalon>:/tools/ToolBar/ToolAlJust.png</normalon>:/tools/ToolBar/ToolAlJustUnSel.png</iconset>
+            <normalon>:/tools/ToolBar/ToolAlJust.png</normalon>
+            <disabledoff>:/tools/ToolBar/ToolAlJustUnSelDisabled.png</disabledoff>
+            <disabledon>:/tools/ToolBar/ToolAlJustDisabled.png</disabledon>:/tools/ToolBar/ToolAlJustUnSel.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -883,58 +865,6 @@ image:none;
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="butFontUp">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>36</width>
-            <height>36</height>
-           </size>
-          </property>
-          <property name="statusTip">
-           <string>Increase font size</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background:qlineargradient(spread:pad, x1:0.517, y1:1, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.977273 rgba(91, 91, 91, 255), stop:1 rgba(255, 255, 255, 255));
-}
-QPushButton:pressed {
-background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:1, stop:0 rgba(97, 97, 97, 255), stop:1 rgba(144, 144, 144, 255));
-}
-QPushButton:checked{
-background:white;
-image:none;
-}
-
-</string>
-          </property>
-          <property name="icon">
-           <iconset resource="resources/icons.qrc">
-            <normaloff>:/tools/ToolBar/ToolFontUp.png</normaloff>:/tools/ToolBar/ToolFontUp.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer_4">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -951,9 +881,139 @@ image:none;
       </item>
      </layout>
     </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>200</y>
+       <width>82</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QSpinBox" name="fontSizeBox">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>34</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="statusTip">
+         <string>Set a Font Size</string>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: #000;
+background-color: #fff;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::UpDownArrows</enum>
+        </property>
+        <property name="minimum">
+         <number>6</number>
+        </property>
+        <property name="maximum">
+         <number>48</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFontComboBox" name="fontComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #fff;
+color: #000;
+</string>
+        </property>
+        <property name="currentText">
+         <string notr="true">Arial</string>
+        </property>
+        <property name="currentIndex">
+         <number>26</number>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertAtBottom</enum>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QComboBox::AdjustToContents</enum>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="modelColumn">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
   <action name="actionNew">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu/MenuBar/MenuNew.png</normaloff>:/menu/MenuBar/MenuNew.png</iconset>
+   </property>
    <property name="text">
     <string>New</string>
    </property>
@@ -962,6 +1022,10 @@ image:none;
    </property>
   </action>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu/MenuBar/MenuOpen.png</normaloff>:/menu/MenuBar/MenuOpen.png</iconset>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
@@ -970,6 +1034,10 @@ image:none;
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu/MenuBar/MenuSave.png</normaloff>:/menu/MenuBar/MenuSave.png</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -978,6 +1046,10 @@ image:none;
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu/MenuBar/MenuHelp.png</normaloff>:/menu/MenuBar/MenuHelp.png</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
@@ -994,6 +1066,10 @@ image:none;
    </property>
   </action>
   <action name="actionQuit_2">
+   <property name="icon">
+    <iconset resource="resources/icons.qrc">
+     <normaloff>:/menu/MenuBar/MenuExit.png</normaloff>:/menu/MenuBar/MenuExit.png</iconset>
+   </property>
    <property name="text">
     <string>Quit</string>
    </property>
@@ -1028,7 +1104,7 @@ image:none;
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Syntax</string>
+    <string>Code</string>
    </property>
   </action>
  </widget>
