@@ -472,16 +472,25 @@ void MainWindow::on_actionNew_triggered()
     if (save_check){
         QMessageBox NewDialog;
             NewDialog.setWindowTitle("WARNING!");
-            NewDialog.setText(tr("Do u want to continue? \nAll unsaved changes will be lost?"));
-            NewDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No);
-            NewDialog.setDefaultButton(QMessageBox::No);
+            NewDialog.setText(tr("File have been modified! Do you want to save changes? \nAll unsaved changes will be lost!"));
+            NewDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+            NewDialog.setDefaultButton(QMessageBox::Cancel);
             NewDialog.setStyleSheet("color: #fff; background-color: #303030");
             int res = NewDialog.exec();
             switch (res) {
-            case QMessageBox::No:
-                break;
             case QMessageBox::Yes:
+                on_actionSave_triggered();
+                if (save_done)
+                {
+                    ui->textEdit->clear();
+                    save_check = 0;
+                }
+                break;
+            case QMessageBox::No:
                 ui->textEdit->clear();
+                save_check = 0;
+                break;
+            case QMessageBox::Cancel:
                 break;
             default:
                 break;
