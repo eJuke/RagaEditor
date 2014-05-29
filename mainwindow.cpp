@@ -435,7 +435,8 @@ void MainWindow::buttons() {
 
 void MainWindow::on_actionSyntax_triggered(bool check)
 {
-    if(check){
+    if(check)
+    {
         syntax = new Syntax(ui->textEdit->document());
         QFile file("mainwindow.h");
         if (file.open(QFile::ReadOnly | QFile::Text)) ui->textEdit->setPlainText(file.readAll());
@@ -453,7 +454,8 @@ void MainWindow::on_actionSyntax_triggered(bool check)
         ui->fontComboBox->setDisabled(true);
         ui->fontSizeBox->setDisabled(true);
     }
-    else{
+    else
+    {
         ui->butBold->setEnabled(true);
         ui->butItalic->setEnabled(true);
         ui->butUnderL->setEnabled(true);
@@ -464,12 +466,15 @@ void MainWindow::on_actionSyntax_triggered(bool check)
         ui->textEdit->setWordWrapMode(QTextOption::WordWrap);
         ui->fontComboBox->setEnabled(true);
         ui->fontSizeBox->setEnabled(true);
+
+        syntax->deleteLater();
     }
 }
 
 void MainWindow::on_actionNew_triggered()
 {
-    if (save_check){
+    if (save_check)
+    {
         QMessageBox NewDialog;
             NewDialog.setWindowTitle("WARNING!");
             NewDialog.setText(tr("File have been modified! Do you want to save changes? \nAll unsaved changes will be lost!"));
@@ -477,7 +482,8 @@ void MainWindow::on_actionNew_triggered()
             NewDialog.setDefaultButton(QMessageBox::Cancel);
             NewDialog.setStyleSheet("color: #fff; background-color: #303030");
             int res = NewDialog.exec();
-            switch (res) {
+            switch (res)
+            {
             case QMessageBox::Yes:
                 on_actionSave_triggered();
                 if (save_done)
