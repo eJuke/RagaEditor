@@ -47,6 +47,7 @@ private:
     QString *Save_path;
     bool save_check;
     bool save_done;
+    bool make_open;
 
     //Search
     QWidget *searchWindow;

@@ -51,6 +51,30 @@ void MainWindow::on_actionQuit_2_triggered(){
 
 //Open File
 void MainWindow::on_actionOpen_triggered(){
+    make_open = 1;
+    if (save_check){
+        QMessageBox NewDialog;
+            NewDialog.setWindowTitle("WARNING!");
+            NewDialog.setText(tr("File have been modified! Do you want to save changes? \nAll unsaved changes will be lost!"));
+            NewDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+            NewDialog.setDefaultButton(QMessageBox::Cancel);
+            NewDialog.setStyleSheet("color: #fff; background-color: #303030");
+            int res = NewDialog.exec();
+            switch (res)
+            {
+            case QMessageBox::Yes:
+                on_actionSave_triggered();
+                break;
+            case QMessageBox::No:
+                break;
+            case QMessageBox::Cancel:
+                make_open = 0;
+                break;
+            default:
+                break;
+        }
+    }
+    if (make_open){
     QString FilePath = QFileDialog::getOpenFileName(this, tr("Open File"), "",
             tr("Text Files (*.txt);;C++ Files (*.cpp);; HTML (*.html);;All files (*.*)"));
         if (!FilePath.isEmpty())
@@ -62,11 +86,20 @@ void MainWindow::on_actionOpen_triggered(){
                 return;
             }
             QTextStream text(&file);
+            QTextCursor cursor(ui->textEdit->document());
             ui->textEdit->setText(text.readAll());
             file.close();
+            ui->textEdit->selectAll();
+            ui->textEdit->setFontItalic(0);
+            ui->textEdit->setFontWeight(10);
+            ui->textEdit->setFontUnderline(0);
+            ui->textEdit->setAlignment(Qt::AlignLeft);
+            ui->textEdit->setCurrentFont(QFont ("Arial",8));
+            ui->textEdit->setTextCursor(cursor);
             save_check = false;
             save_done = true;
         }
+    }
 }
 
 
@@ -116,6 +149,7 @@ void MainWindow::on_actionSave_triggered()
             }
         }
         */
+
     QFileDialog dialog(this, tr("Save as ..."), "");
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     QStringList filters;
@@ -473,8 +507,10 @@ void MainWindow::on_actionSyntax_triggered(bool check)
 
 void MainWindow::on_actionNew_triggered()
 {
+    QTextCursor cursor(ui->textEdit->document());
     if (save_check)
     {
+
         QMessageBox NewDialog;
             NewDialog.setWindowTitle("WARNING!");
             NewDialog.setText(tr("File have been modified! Do you want to save changes? \nAll unsaved changes will be lost!"));
@@ -494,6 +530,14 @@ void MainWindow::on_actionNew_triggered()
                 break;
             case QMessageBox::No:
                 ui->textEdit->clear();
+
+                ui->textEdit->selectAll();
+                ui->textEdit->setFontItalic(0);
+                ui->textEdit->setFontWeight(10);
+                ui->textEdit->setFontUnderline(0);
+                ui->textEdit->setAlignment(Qt::AlignLeft);
+                ui->textEdit->setCurrentFont(QFont ("Arial",8));
+                ui->textEdit->setTextCursor(cursor);
                 save_check = 0;
                 break;
             case QMessageBox::Cancel:
@@ -503,6 +547,13 @@ void MainWindow::on_actionNew_triggered()
         }
     } else {
         ui->textEdit->clear();
+        ui->textEdit->selectAll();
+        ui->textEdit->setFontItalic(0);
+        ui->textEdit->setFontWeight(10);
+        ui->textEdit->setFontUnderline(0);
+        ui->textEdit->setAlignment(Qt::AlignLeft);
+        ui->textEdit->setCurrentFont(QFont ("Arial",8));
+        ui->textEdit->setTextCursor(cursor);
         save_check = 0;
     }
 }
