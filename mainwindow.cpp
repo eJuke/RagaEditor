@@ -8,10 +8,12 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow){
         ui->setupUi(this);
         this->setWindowTitle("RagaEditor");
-        ui->textEdit->setFontPointSize(8);
         connect(ui->textEdit,SIGNAL(cursorPositionChanged()),
                 this,SLOT(buttons()));
         connect(ui->textEdit,SIGNAL(textChanged()),this,SLOT(Save_check()));
+        ui->textEdit->setFontFamily("Courier");
+        ui->textEdit->setFontPointSize(10);
+        ui->textEdit->setTabStopWidth(30);
         save_check = false;
         save_done = false;
 }
@@ -88,6 +90,7 @@ void MainWindow::on_actionOpen_triggered(){
             QTextStream text(&file);
             QTextCursor cursor(ui->textEdit->document());
             ui->textEdit->setText(text.readAll());
+            this->setWindowTitle(FilePath+" - RagaEditor");
             file.close();
             ui->textEdit->selectAll();
             ui->textEdit->setFontItalic(0);
@@ -130,25 +133,6 @@ void MainWindow::on_actionAbout_triggered(){
 //Save File
 void MainWindow::on_actionSave_triggered()
 {
-    /*QString Save_pat = QFileDialog::getSaveFileName(this, tr("Saving by Raga"), "",
-        tr("Text Files (*.txt);;C++ Files (*.cpp);; html (*.html)"));
-        if (!Save_pat.isEmpty())
-        {
-            QFile file(Save_pat);
-            if (!file.open(QIODevice::WriteOnly)){
-                QMessageBox::critical(this,tr("Error"),tr("Error"));
-                return;
-            }
-            else{
-                QTextStream stream(&file);
-                stream << ui->textEdit->toPlainText();
-                stream.flush();
-                file.close();
-                save_check = false;
-                save_done = true;
-            }
-        }
-        */
 
     QFileDialog dialog(this, tr("Save as ..."), "");
     dialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -170,12 +154,32 @@ void MainWindow::on_actionSave_triggered()
         }
         else{
             QTextStream stream(&file);
-            if (selectedFilter == "Text Files (*.txt)" || selectedFilter == "C++ Files (*.cpp)")    stream << ui->textEdit->toPlainText();
+            if (selectedFilter == "Text Files (*.txt)" || selectedFilter == "C++ Files (*.cpp)"){
+                if (!ui->actionSyntax->isChecked()){
+                    QMessageBox WarningDialog;
+                    WarningDialog.setText(tr("You try to save the text without formatting.\nAre u really want to do it?! "));
+                    WarningDialog.setStandardButtons( QMessageBox::Yes | QMessageBox::No);
+                    WarningDialog.setDefaultButton(QMessageBox::No);
+                    WarningDialog.setStyleSheet("color: #000; background-color: #fff");
+                    int ret = WarningDialog.exec();
+                    switch (ret) {
+                    case QMessageBox::No:
+                        break;
+                    case QMessageBox::Yes:
+                        stream << ui->textEdit->toPlainText();
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            else stream << ui->textEdit->toPlainText();
+            }
             if (selectedFilter == "HTML (*.html)") stream << ui->textEdit->toHtml();
             stream.flush();
             file.close();
             save_check = false;
             save_done = true;
+            this->setWindowTitle(Save_pat+" - RagaEditor");
         }
     }
 }

@@ -35,7 +35,11 @@ private:
     QTextCharFormat singleLineCommentFormat;
     QTextCharFormat multiLineCommentFormat;
     QTextCharFormat quotationFormat;
+    QTextCharFormat quotPreFormat;
+    QTextCharFormat quotBinFormat;
     QTextCharFormat functionFormat;
+    QTextCharFormat preProcessorFormat;
+    QTextCharFormat includeFormat;
 };
 
 #endif // SYNTAX_CHECK_H

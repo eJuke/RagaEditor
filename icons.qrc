@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/tools">
+        <file>ToolBar/ToolAlCenter.png</file>
+        <file>ToolBar/ToolAlCenterUnSel.png</file>
+        <file>ToolBar/ToolAlJust.png</file>
+        <file>ToolBar/ToolAlJustUnSel.png</file>
+        <file>ToolBar/ToolAlLeft.png</file>
+        <file>ToolBar/ToolAlLeftUnSel.png</file>
+        <file>ToolBar/ToolAlRight.png</file>
+        <file>ToolBar/ToolAlRightUnSel.png</file>
+        <file>ToolBar/ToolBold.png</file>
+        <file>ToolBar/ToolBoldUnSel.png</file>
+        <file>ToolBar/ToolItalic.png</file>
+        <file>ToolBar/ToolItalicUnSel.png</file>
+        <file>ToolBar/ToolRedo.png</file>
+        <file>ToolBar/ToolRedoUnSel.png</file>
+        <file>ToolBar/ToolUnderL.png</file>
+        <file>ToolBar/ToolUnderLUnSel.png</file>
+        <file>ToolBar/ToolUndo.png</file>
+        <file>ToolBar/ToolUndoUnSel.png</file>
+        <file>ToolBar/ToolSearch.png</file>
+        <file>ToolBar/ToolAlCenterDisabled.png</file>
+        <file>ToolBar/ToolAlCenterUnSelDisabled.png</file>
+        <file>ToolBar/ToolAlJustDisabled.png</file>
+        <file>ToolBar/ToolAlJustUnSelDisabled.png</file>
+        <file>ToolBar/ToolAlLeftDisabled.png</file>
+        <file>ToolBar/ToolAlLeftUnSelDisabled.png</file>
+        <file>ToolBar/ToolAlRightDisabled.png</file>
+        <file>ToolBar/ToolAlRightUnSelDisabled.png</file>
+        <file>ToolBar/ToolBoldDisabled.png</file>
+        <file>ToolBar/ToolBoldUnSelDisabled.png</file>
+        <file>ToolBar/ToolItalicDisabled.png</file>
+        <file>ToolBar/ToolItalicUnSelDisabled.png</file>
+        <file>ToolBar/ToolUnderLDisabled.png</file>
+        <file>ToolBar/ToolUnderLUnSelDisabled.png</file>
+    </qresource>
+    <qresource prefix="/menu">
+        <file>MenuBar/MenuExit.png</file>
+        <file>MenuBar/MenuHelp.png</file>
+        <file>MenuBar/MenuNew.png</file>
+        <file>MenuBar/MenuOpen.png</file>
+        <file>MenuBar/MenuSave.png</file>
+        <file>MenuBar/MenuSet.png</file>
+    </qresource>
+</RCC>

@@ -53,7 +53,8 @@ color: rgb(0, 0, 0);
        <widget class="QTextEdit" name="textEdit">
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>Courier</family>
+          <pointsize>10</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -927,8 +928,11 @@ background-color: #fff;</string>
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
         </property>
+        <property name="correctionMode">
+         <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+        </property>
         <property name="minimum">
-         <number>6</number>
+         <number>10</number>
         </property>
         <property name="maximum">
          <number>48</number>
@@ -937,7 +941,7 @@ background-color: #fff;</string>
          <number>1</number>
         </property>
         <property name="value">
-         <number>8</number>
+         <number>10</number>
         </property>
        </widget>
       </item>
@@ -961,6 +965,15 @@ background-color: #fff;</string>
           <height>16777215</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="statusTip">
+         <string>Set a Font Family</string>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
@@ -970,16 +983,16 @@ color: #000;
 </string>
         </property>
         <property name="currentText">
-         <string notr="true">Arial</string>
+         <string notr="true">Courier</string>
         </property>
         <property name="currentIndex">
-         <number>26</number>
+         <number>84</number>
         </property>
         <property name="insertPolicy">
-         <enum>QComboBox::InsertAtBottom</enum>
+         <enum>QComboBox::NoInsert</enum>
         </property>
         <property name="sizeAdjustPolicy">
-         <enum>QComboBox::AdjustToContents</enum>
+         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
         </property>
         <property name="iconSize">
          <size>
@@ -989,6 +1002,12 @@ color: #000;
         </property>
         <property name="modelColumn">
          <number>0</number>
+        </property>
+        <property name="currentFont">
+         <font>
+          <family>Courier</family>
+          <pointsize>10</pointsize>
+         </font>
         </property>
        </widget>
       </item>
